@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 const Banner = () => {
   
   const products = useSelector((state) => state.cart.products);
-   console.log(products);
+   
 
 
   return (

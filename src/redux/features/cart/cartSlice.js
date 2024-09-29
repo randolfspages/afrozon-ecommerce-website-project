@@ -20,14 +20,14 @@ const initialState = {
             if(!isExist) {
                 state.products.push({...action.payload, quantity: 1})
             } else {
-                console.log('items already exist');
+                console.log('item already exist');
             };
 
 
-            state.selectedItems=setSelectedItems(state)
-            state.totalPrice=setTotalPrice(state)
-            state.tax = setTax(state)
-            state.grandTotal = setGrandTotal(state)
+            state.selectedItems=setSelectedItems(state);
+            state.totalPrice=setTotalPrice(state);
+            state.tax = setTax(state);
+            state.grandTotal = setGrandTotal(state);
         }
     }
   })
