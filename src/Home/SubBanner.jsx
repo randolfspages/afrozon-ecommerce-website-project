@@ -1,7 +1,13 @@
 import React from 'react'
 import { CgArrowLongRight } from "react-icons/cg";
 import { Link } from 'react-router-dom';
+
+
+
+
 const SubBanner = () => {
+
+    
   return (
     <div>
         <div className='overlay'></div>
@@ -12,7 +18,7 @@ const SubBanner = () => {
                         SUPER SALES - 50%
                     </h1>
                     <h1 className='banner-text text-4xl lg:text-7xl leading-snug font-extrabold'>
-                        Quality apparel without the price tag
+                        Authentic African apparel without the price tag
                     </h1>
                     <p className="sub-heading">No need to spend $XXX on apparel just for the name's sake.
                         Our premium apparel is made from the same stuff.

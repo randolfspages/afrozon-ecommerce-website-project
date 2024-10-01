@@ -20,7 +20,7 @@ const initialState = {
             if(!isExist) {
                 state.products.push({...action.payload, quantity: 1})
             } else {
-                console.log('item already exist');
+                console.log('Item already added');
             };
 
 
