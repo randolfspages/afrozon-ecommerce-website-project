@@ -27,8 +27,8 @@ const CartModal = ({products, isOpen, onClose}) => {
 
                     <div>
                         {
-                            products.length === 0 ? (<div>Your cart is empty</div>) : (
-                               products.map((item, index) => (
+                            products.length === 0 ? (<div>Your cart is empty</div>) 
+                            : (products.map((item, index) => (
                                 <div key={index}>
                                     <div>
                                         <span className='mr-4 px-1 bg-red-700 rounded-full text-white'>0{index + 1}</span>
