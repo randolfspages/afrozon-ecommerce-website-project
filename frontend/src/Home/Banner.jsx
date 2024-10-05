@@ -10,6 +10,7 @@ import CartModal from '../shop/CartModal';
 const Banner = () => {
   
   const products = useSelector((state) => state.cart.products);
+  console.log(products);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const handleCartToggle = () => {
     setIsCartOpen(!isCartOpen)
