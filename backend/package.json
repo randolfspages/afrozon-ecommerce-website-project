@@ -1,0 +1,29 @@
+{
+  "name": "afrozon-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "nodemon index.js"
+  },
+  "keywords": [
+    "African Wear",
+    "Afro Wear",
+    "Kente",
+    "Ghana",
+    "African Print",
+    "Ladies Shorts",
+    "Kids Shorts",
+    "Underwears",
+    "Accessories",
+    "Skirt",
+    "Trousers"
+  ],
+  "author": "Randolf",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0",
+    "nodemon": "^3.1.7"
+  }
+}

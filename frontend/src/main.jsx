@@ -10,7 +10,8 @@ import Contact from './pages/Contact.jsx'
 import CategoryPage from './pages/CategoryPage.jsx'
 import Search from './pages/Search.jsx'
 import SingleProduct from './shop/productDetails/SingleProduct.jsx'
-
+import Login from './components/Login.jsx'
+import Register from './components/Register.jsx'
 import { Provider } from 'react-redux'
 import { store } from './redux/store.js'
 
@@ -31,6 +32,16 @@ const router = createBrowserRouter([
         
         ]
       },
+
+      {
+        path: '/login',
+        element:<Login />
+      },
+      {
+        path: '/register',
+        element:<Register />
+      },
+      
 ])
 
 

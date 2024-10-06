@@ -34,7 +34,9 @@ const Banner = () => {
                 </span>
 
                 <span>
-                  <Link><LuUser2 className='h-7 w-7' /></Link>
+                  <Link>
+                    <LuUser2 className='h-7 w-7' />
+                  </Link>
                 </span>
           </div>
         </div>
