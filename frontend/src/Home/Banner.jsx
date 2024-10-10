@@ -2,18 +2,64 @@ import React, { useState } from 'react'
 import { IoIosSearch } from "react-icons/io";
 import { AiOutlineShopping } from "react-icons/ai";
 import { LuUser2 } from "react-icons/lu";
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import CartModal from '../shop/CartModal';
+import { useLogoutUserMutation } from '../redux/features/auth/authApi';
+import { logout } from '../redux/features/auth/authSlice';
+
+
 
 
 const Banner = () => {
   
   const products = useSelector((state) => state.cart.products);
-  console.log(products);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const handleCartToggle = () => {
     setIsCartOpen(!isCartOpen)
+  }
+
+  // Show user if logged in
+  const dispatch = useDispatch();
+  const  {user} = useSelector((state) => state.auth);
+  const [logoutUser] = useLogoutUserMutation();
+  const navigate = useNavigate();
+
+
+  // Show Drop Down Menu
+  const [isDropDownOpened, setIsDropDownOpened] = useState(false)
+  const handleDropDownToggle = () => {
+    setIsDropDownOpened(!isDropDownOpened)
+  }
+
+
+
+  // admin dropDown Menu
+  const adminDropDownMenu = [
+    {label: 'Dashboard', path: '/dashboard/admin'},
+    {label: 'Manage Items', path: '/dashboard/manage-products'},
+    {label: 'All Orders', path: '/dashboard/manage-orders'},
+    {label: 'Add New Post', path: '/dashboard/add-new-post'},
+  ]
+
+  // userDropDown Menu
+  const userDropDownMenu = [
+    {label: 'Dashboard', path: '/dashboard'},
+    {label: 'Profile', path: '/dashboard/profile'},
+    {label: 'Payments', path: '/dashboard/payments'},
+    {label: 'Orders', path: '/dashboard/orders'},
+  ]
+
+  const dropDownMenu = user?.role === 'admin' ? [...adminDropDownMenu] : [...userDropDownMenu]
+  
+  const handleLogout = async () => {
+      try {
+        await logoutUser().unwrap()
+        dispatch(logout())
+        navigate('/')
+      } catch (error) {
+        console.error('Failed to log out', error)
+      }
   }
 
 
@@ -34,9 +80,31 @@ const Banner = () => {
                 </span>
 
                 <span>
-                  <Link to='/login'>
-                    <LuUser2 className='h-7 w-7 hover:text-red-700' />
-                  </Link>
+                  {
+                    user && user ? (<>
+                    <img 
+                    onClick={handleDropDownToggle}
+                    src="{user?.profileImage || avatar.png}" alt="" className='size-6 rounded-full cursor-pointer' />
+                    {
+                      isDropDownOpened && (
+                        <div className='absolute right-0 mt-3 p-4 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50'>
+                            <ul className='font-medium space-y-4 p-2'>
+                              {dropDownMenu.map((menu, index) => (
+                                <li key={index}>
+                                  <Link 
+                                  onClick={() => setIsDropDownOpened(false)}
+                                  className='dropdown-items' to={menu.path}>{menu.label}</Link>
+                                </li>
+                              ))}
+                              <li><Link onClick={handleLogout} className='dropdown-items hover:text-red-700'>Logout</Link></li>
+                            </ul>
+                        </div>
+                      )
+                    }
+                    </>) : (<Link to='/login'>
+                      <LuUser2 className='h-7 w-7 hover:text-red-700' />
+                    </Link>)
+                  }
                 </span>
           </div>
         </div>
