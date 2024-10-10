@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import CartModal from '../shop/CartModal';
 import { useLogoutUserMutation } from '../redux/features/auth/authApi';
 import { logout } from '../redux/features/auth/authSlice';
+import avatar from '../../public/avatar.png'
 
 
 
@@ -84,7 +85,9 @@ const Banner = () => {
                     user && user ? (<>
                     <img 
                     onClick={handleDropDownToggle}
-                    src="{user?.profileImage || avatar.png}" alt="" className='size-6 rounded-full cursor-pointer' />
+                    src={user?.profileImage || avatar} 
+                    alt="" 
+                    className='size-7 rounded-full cursor-pointer' />
                     {
                       isDropDownOpened && (
                         <div className='absolute right-0 mt-3 p-4 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50'>
@@ -93,7 +96,7 @@ const Banner = () => {
                                 <li key={index}>
                                   <Link 
                                   onClick={() => setIsDropDownOpened(false)}
-                                  className='dropdown-items' to={menu.path}>{menu.label}</Link>
+                                  className='dropdown-items hover:underline' to={menu.path}>{menu.label}</Link>
                                 </li>
                               ))}
                               <li><Link onClick={handleLogout} className='dropdown-items hover:text-red-700'>Logout</Link></li>
