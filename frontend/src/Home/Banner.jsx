@@ -23,19 +23,19 @@ const Banner = () => {
         <div className='px-4 mx-auto fixed top-0 right-0 left-0 bg-white' style={{zIndex:'100', marginTop:'74px', padding:'0',}}>
               <div className='py-6 relative flex justify-evenly space-x-10' style={{}}>
                 <span>
-                  <Link to='/search'><IoIosSearch className='h-7 w-7' /></Link>
+                  <Link to='/search'><IoIosSearch className='h-7 w-7 hover:text-red-700' /></Link>
                 </span>
 
                 <span>
                   <button onClick={handleCartToggle}>
-                    <AiOutlineShopping className='h-7 w-7 relative' />
+                    <AiOutlineShopping className='h-7 w-7 relative hover:text-red-700' />
                     <div className='absolute top-3 right-45 text-xs inline-block px-1.5 bg-red-700 text-stone-200' style={{borderBottomLeftRadius:'6px', borderBottomRightRadius:'6px'}}>{products.length}</div>
                   </button>
                 </span>
 
                 <span>
-                  <Link>
-                    <LuUser2 className='h-7 w-7' />
+                  <Link to='/login'>
+                    <LuUser2 className='h-7 w-7 hover:text-red-700' />
                   </Link>
                 </span>
           </div>
