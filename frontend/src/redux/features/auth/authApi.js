@@ -8,6 +8,8 @@ const authApi = createApi({
         credentials: 'include',
     }),
 
+    tagTypes: ['User'],
+
     endpoints: (builder) => ({
         registerUser: builder.mutation({
             query: (newUser) => ({
