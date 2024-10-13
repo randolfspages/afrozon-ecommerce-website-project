@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import productsData from '../data/products.json';
 import ProductCards from './ProductCards';
 import ShopFiltering from './ShopFiltering'
+import { useFetchAllProductsQuery } from '../redux/features/products/productsApi';
 
 
 const filters = {
@@ -16,44 +17,26 @@ const filters = {
 };
 
 const Shop = () => {
-  const [products, setProducts] = useState(productsData);
   const [filterState, setFilterState] = useState({
     category: 'all',
     color: 'all',
     priceRange: '',
   });
 
-  // filtering function
-  const applyFilters = () => {
-    let filteredProducts = productsData;
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(8);
 
-    // filter by category
-    if (filterState.category && filterState.category !== 'all') {
-      filteredProducts = filteredProducts.filter(
-        (products) => products.category === filterState.category
-      );
-    }
+  const {category, color, priceRange} = filterState;
+  const [minPrice, maxPrice] = priceRange.split('_').map(Number)
 
-    if (filterState.color && filterState.color !== 'all') {
-      filteredProducts = filteredProducts.filter(
-        (product) => product.color === filterState.color
-      );
-    }
-
-    // filter by price
-    if (filterState.priceRange) {
-      const [minPrice, maxPrice] = filterState.priceRange.split('-').map(Number);
-      filteredProducts = filteredProducts.filter(
-        (product) => product.price >= minPrice && product.price <= maxPrice
-      );
-    }
-
-    setProducts(filteredProducts);
-  };
-
-  useEffect(() => {
-    applyFilters();
-  }, [filterState]);
+  const {data: {products= [], totalPages, totalProducts} = {}, error, isLoading} = useFetchAllProductsQuery({
+    category: category !== 'all' ? category : '',
+    color: color !== 'all' ? color: '',
+    minPrice: isNaN(minPrice) ? '' : minPrice,
+    maxPrice: isNaN(maxPrice) ? '' : maxPrice,
+    page: currentPage, 
+    limit: productsPerPage
+  })
 
   // Clear the filters
   const clearFilters = () => {
@@ -63,6 +46,12 @@ const Shop = () => {
       priceRange: '',
     });
   };
+
+  if(isLoading) return <div>Loading...</div>
+  if(error) return <div>Error loading products.</div>
+
+  const startProduct = (currentPage - 1) * productsPerPage + 1;
+  const endProduct = startProduct + products.length - 1;
 
   return (
     <>
@@ -92,6 +81,14 @@ const Shop = () => {
               Available products: {products.length}
             </h3>
             <ProductCards products={products} />
+            
+            
+            {/* Pagination Controls */}
+            <div className='mt -6 flex justify-center'>
+              <button>Previous</button>
+              <button>Next</button>
+            </div>
+
           </div>
         </div>
       </section>
