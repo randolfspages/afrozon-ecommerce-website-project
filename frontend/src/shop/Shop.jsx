@@ -85,8 +85,22 @@ const Shop = () => {
             
             {/* Pagination Controls */}
             <div className='mt -6 flex justify-center'>
-              <button>Previous</button>
-              <button>Next</button>
+                <button className='px-4 py-2 bg-gray-300 text-gray-700 rounded-md mr-2'>
+                  Previous
+                </button>
+
+                {
+                  [...Array(totalPages)].map((_, index) => (
+                    <button 
+                    key={index}
+                    className={`px-4 py-2 ${currentPage === index + 1 ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-700'}
+                                rounded-md mx-1`}
+                    >{index + 1}</button>
+                  
+                  ))
+                <button className='px-4 py-2 bg-gray-300 text-gray-700 rounded-md mr-2'>
+                  Next
+                </button>
             </div>
 
           </div>
