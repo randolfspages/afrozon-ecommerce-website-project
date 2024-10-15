@@ -3,24 +3,34 @@ import { Link, useParams } from 'react-router-dom'
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import ProductsData from '../../data/products.json'
 import RatingStars from '../../components/RatingStars';
+import { useDispatch } from 'react-redux';
+import { useFetchProductByIdQuery } from '../../redux/features/products/productsApi';
 
 
 const SingleProduct = () => {
     const {id} = useParams();
         
-    console.log(ProductsData.id);
+    const dispatch =  useDispatch();
+    const {data, error, isLoading} = useFetchProductByIdQuery(id);
+    console.log(data);
+
+    const singleProduct = data?.product || {};
+    console.log(singleProduct)
+    const productReviews = data?.reviews || [];
+
+
 
   return (
     <>
     <section
         className="container section__container shadow-sm"
         style={{ marginTop: '154px' }}>
-        <h2 className="section__header capitalize">Shop Products</h2>
+        <h2 className="section__header capitalize">Single Product Page</h2>
         <div className='section__subheader space-x-2 flex items-center justify-center text-red-700'>
             <span className=''><Link to='/'>Home</Link></span>
             <MdKeyboardDoubleArrowRight />
 
-            <span className=''><Link to='/'>Shop</Link></span>
+            <span className=''><Link to='/shop'>Shop</Link></span>
             <MdKeyboardDoubleArrowRight />
 
 

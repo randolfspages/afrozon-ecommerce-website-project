@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const ReviewSchema = new mongoose.Schema ( {
     comment: { type:String, required: true},
-    ratting: {type: Number, required: true},
+    rating: {type: Number, required: true},
     userId: {
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'User', 

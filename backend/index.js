@@ -1,15 +1,15 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require('cors')
 const app = express();
-require('dotenv').config();
+require('dotenv').config()
 const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser')
 const port = process.env.PORT || 3000;
 
 // middleware step 
 app.use(express.json({limit: "25mb"}));
-app.use((express.urlencoded({limit: "25mb"})));
+//app.use((express.urlencoded({limit: "25mb"})));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -38,7 +38,7 @@ async function main() {
   await mongoose.connect(process.env.DB_URL);
 
   app.get('/', (req, res) => {
-    res.send('Afrozon Ecommerce Application is running...!')
+    res.send('Afrozon Ecommerce Server is running...!')
   });
 
 }
