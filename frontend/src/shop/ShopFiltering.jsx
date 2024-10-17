@@ -46,7 +46,7 @@ const ShopFiltering = ({filters, filterState, setFilterState, clearFilters}) => 
         <h4 className='font-medium text-lg'>Price Range</h4>
         <hr />
         {
-          filters.priceRange.map((range) => (
+          filters.priceRanges.map((range) => (
             <label htmlFor="" key={range.label} className='capitalize cursor-pointer'>
               <input type="radio" name='priceRange' id='priceRange' value={`${range.min}-${range.max}`} 
               checked={filterState.priceRange === `${range.min}-${range.max}`} 

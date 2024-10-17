@@ -54,13 +54,13 @@ const CartModal = ({products, isOpen, onClose}) => {
                                         </div>
 
                                         <div className='flex flex-row md:justify-start justify-end items-center mt-2'>
-                                            <button onClick={() => handleQunatity('decreament', item.id)} className='size-8 flex items-center justify-center px-1.5 rounded-full bg-gray-200 text-gray-700 hover:bg-red-700 hover:text-white ml-8'><BsCartDash className='size-8' /></button>
+                                            <button onClick={() => handleQunatity('decreament', item._id)} className='size-8 flex items-center justify-center px-1.5 rounded-full bg-gray-200 text-gray-700 hover:bg-red-700 hover:text-white ml-8'><BsCartDash className='size-8' /></button>
                                             <span className='px-2 text-center mx-1'>{item.quantity}</span>
-                                            <button onClick={() => handleQunatity('increament', item.id)} className='size-8 flex items-center justify-center px-1.5 rounded-full bg-gray-200 text-gray-700 hover:bg-green-700 hover:text-white'><BsCartPlus className='size-8' /></button>
+                                            <button onClick={() => handleQunatity('increament', item._id)} className='size-8 flex items-center justify-center px-1.5 rounded-full bg-gray-200 text-gray-700 hover:bg-green-700 hover:text-white'><BsCartPlus className='size-8' /></button>
                                         </div>
 
                                         <div className='ml-5'>
-                                            <button onClick={(e) => handleRemoveFromCart(e, item.id)} className='text-red-400 hover:text-red-700 mr-4'>Remove</button>
+                                            <button onClick={(e) => handleRemoveFromCart(e, item._id)} className='text-red-400 hover:text-red-700 mr-4'>Remove</button>
                                         </div>
 
                                     </div>

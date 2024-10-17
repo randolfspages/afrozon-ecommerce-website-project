@@ -14,11 +14,11 @@ router.post("/register", async (req, res) => {
         const {username, email, password} = req.body;
         const user = new User({email, username, password});
         await user.save();
-        res.status(201).send({message: 'user registration successfully!'})
+        res.status(201).send({message: 'User registration successfully!'});
     }
     catch (error) { 
         console.log('Error registering user', error);
-        res.status(500).send({message: 'Error registering user', })
+        res.status(500).send({message: 'Error registering user' });
     }
 });
 
@@ -37,14 +37,14 @@ router.post('/login', async (req, res) => {
             return res.status(401).send({message: 'Password not match'})
         }
 
-        const token = await generateToken(user.id);
+        const token = await generateToken(user._id);
        
         
         res.cookie('token', token, {
             httpOnly: true,
             secure: true,
             sameSite: "None"
-        })
+        });
     
         res.status(200).send({message: 'logged in successfully', token, user: {
             _id: user._id,
@@ -53,20 +53,20 @@ router.post('/login', async (req, res) => {
             role: user.role,
             profileImage: user.profileImage,
             bio: user.bio,
-            profession: user.profession
-        } })
+            profession: user.profession,
+        }, });
     } catch (error) {
         console.error('Error logged in user', error);
-        res.status(500).send({message: 'Error logged in user', })
+        res.status(500).send({message: 'Error logged in user', });
     }
-})
+});
 
 
 // Logout endpoint
 router.post('/logout', (req, res) => {
     res.clearCookie('token');
-    res.status(200).send({message: 'Logged out successfully'})
-})
+    res.status(200).send({message: 'Logged out successfully'});
+});
 
 
 // to delete a User
@@ -75,26 +75,26 @@ router.delete('/users/:id', async (req, res) => {
         const {id} = req.params;
         const user = await User.findByIdAndDelete(id)
         if (!user) {
-            return res.status(404).send({message: 'User delete successfully'})
+            return res.status(404).send({message: 'User not found'});
         }
-        res.status(200).send({message: 'User deleted successfully'})
+        res.status(200).send({message: 'User deleted successfully'});
     } catch (error) {
             console.error("Error deleting user", error);
-            res.status(500).send({message: "Error deleting user"})
+            res.status(500).send({message: "Error deleting user"});
     }
-})
+});
 
 
 // get all Users
 router.get('/users', async (req, res) => {
     try {
         const users = await User.find({}, 'id email role').sort({createdAt: -1});
-        res.status(200).send(users)
+        res.status(200).send(users);
     } catch (error) {
         console.error('Error fetching users', error);
-        res.status(500).send({message: 'Error deleting user', })
+        res.status(500).send({message: 'Error deleting user' });
     }
-})
+});
 
 
 // Update user role
@@ -104,13 +104,15 @@ router.put('/users/:id', async (req, res) => {
         const {role} = req.body;
         const user = await User.findByIdAndUpdate(id, {role}, {new: true});
         if(!user) {
-            return res.status(404).send({message: 'User not found'})
+            return res.status(404).send({message: 'User not found'});
         }
+        res.status(200).send({ message: "User role updated successfully", user });
+
     } catch (error) {
         console.error('Error updating user role', error);
-        res.status(500).send({message: 'Error fetching user', })
+        res.status(500).send({message: 'Error fetching user', });
     }
-})
+});
 
 
 // Edit or Upadate profiles
@@ -126,7 +128,7 @@ router.patch('/edit-profile', async (req, res) => {
             return res.status(400).send({message:'User not found'});
         }
 
-        // Updat Profile
+        // Update Profile
         if(username !== undefined) user.username = username; 
         if(profileImage !== undefined) user.profileImage = profileImage; 
         if(bio !== undefined) user.bio = bio; 
@@ -143,7 +145,7 @@ router.patch('/edit-profile', async (req, res) => {
             bio: user.bio,
             profession: user.profession,
         },
-    })
+    });
 
     } catch (error) {
         console.error('Error updating user profile', error);
