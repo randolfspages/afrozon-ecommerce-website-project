@@ -130,7 +130,6 @@ router.patch("/update-product/:id", verifyToken, verifyAdmin, async (req, res) =
     }
   });
 
-
   
   // get related products
   router.get("/related/:id", async (req, res) => {

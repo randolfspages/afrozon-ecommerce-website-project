@@ -1,4 +1,4 @@
-export const steps = [
+const steps = [
     {
       status: 'pending',
       label: 'Pending',

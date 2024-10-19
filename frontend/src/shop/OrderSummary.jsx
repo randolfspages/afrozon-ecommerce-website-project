@@ -3,17 +3,55 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RiDeleteBin2Fill } from "react-icons/ri";
 import { MdOutlinePayment } from "react-icons/md";
 import { clearCart } from '../redux/features/cart/cartSlice';
+import {loadStripe} from '@stripe/stripe-js'
+import { getBaseUrl } from '../utils/baseURL';
+
 
 
 
 
 const OrderSummary = () => {
     const dispatch = useDispatch()
+    const {user} = useSelector(state => state.auth)
+
     const handleClearCart = () => {dispatch(clearCart())}
 
 
     const products = useSelector((store) => store.cart.products);
+    
     const {tax, taxRate, totalPrice, grandTotal, selectedItems} = useSelector((store) => store.cart);
+
+    // Payment Integration
+    const makePayment = async (e) => {
+          const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PK); //the publishable key from STRIP
+          const body = {
+            products: products,
+            userId: user?._id
+          }
+
+          const headers = {
+            'Content-Type': "application/json"
+          }
+
+          const response = await fetch(`${getBaseUrl()}/api/orders/create-checkout-session`, {
+            method: 'POST', 
+            headers: headers,
+            body: JSON.stringify(body)
+          })
+          
+          const session = await response.json()
+          console.log('session:', session);
+
+          const result = stripe.redirectToCheckout({
+            sessionId: session.id
+          })
+          console.log('Result:', result);
+          if(result.error) {
+            console.log('Error:', result.error)
+          }
+    }
+
+
   return (
     <div className='bg-gray-200 mt-5 rounded text-base'>
        <div className='px-6 py-4 space-y-5'>
@@ -31,6 +69,10 @@ const OrderSummary = () => {
                 </button>
                 
                 <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      makePayment();
+                    }}
                     className='bg-green-700 px-3 py-1.5 text-white mt-2 rounded-md flex justify-between items-center mb-4'>
                     Proceed Checkout<MdOutlinePayment className='ml-1.5' />
                 </button>

@@ -14,6 +14,7 @@ import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
 import { Provider } from 'react-redux'
 import { store } from './redux/store.js'
+import PaymentSuccess from './components/PaymentSuccess.jsx'
 
 
 
@@ -29,6 +30,8 @@ const router = createBrowserRouter([
           {path:'/categories/:categoryName', element:<CategoryPage />},
           {path:'/search', element:<Search />},
           {path:'/shop/:id', element:<SingleProduct />},
+          {path:'/success', element: <PaymentSuccess />}
+          
         
         ]
       },

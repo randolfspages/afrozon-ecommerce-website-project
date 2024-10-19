@@ -49,7 +49,7 @@ const NavBar = () => {
                 }
             </ul>
 
-            <Link to="/"><span className='md:font-extrabold md:text-3xl text-xl font-bold'>AFROZON</span><span className='font-extralight text-xs'>&copy;</span></Link>
+            <Link to="/"><span className='md:font-extrabold md:text-3xl text-xl font-bold'>BESIA</span><span className='font-extralight text-xs'>&copy;</span></Link>
 
             <ul className='md:flex gap-6 hidden'>
                 {
