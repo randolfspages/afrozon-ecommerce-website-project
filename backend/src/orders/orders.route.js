@@ -1,7 +1,7 @@
 const express = require('express')
 const Order = require('./orders.model');
-//const verifyToken = require('../middleware/verifyToken');
-//const verifyAdmin = require('../middleware/verifyAdmin');
+const verifyToken = require('../middleware/verifyToken');
+const verifyAdmin = require('../middleware/verifyAdmin');
 const router = express.Router();
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
@@ -155,8 +155,10 @@ router.patch('/update-order-status/:id', async (req, res) => {
             status,
             updatedAt: new Date(),
         }, 
+
         {
-            new: true, runValidators: true
+            new: true, 
+            runValidators: true
         }
     );
 

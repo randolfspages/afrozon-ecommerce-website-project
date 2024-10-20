@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import CartModal from '../shop/CartModal';
 import { useLogoutUserMutation } from '../redux/features/auth/authApi';
 import { logout } from '../redux/features/auth/authSlice';
-import avatar from '../../public/avatar.png'
+//import avatar from '../../public/avatar.png'
 
 
 
@@ -85,7 +85,7 @@ const Banner = () => {
                     user && user ? (<>
                     <img 
                     onClick={handleDropDownToggle}
-                    src={user?.profileImage || avatar} 
+                    src={user?.profileImage || '/avatar.png'} 
                     alt="" 
                     className='size-7 rounded-full cursor-pointer' />
                     {

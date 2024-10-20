@@ -1,7 +1,7 @@
 const express = require('express');
 const User = require('./user.model');
 const generateToken = require('../middleware/generateToken');
-// const verifyToken = require('../middleware/verifyToken');
+//const verifyToken = require('../middleware/verifyToken');
 const router = express.Router();
 
 
@@ -43,7 +43,7 @@ router.post('/login', async (req, res) => {
         res.cookie('token', token, {
             httpOnly: true,
             secure: true,
-            sameSite: "None"
+            sameSite: "None",
         });
     
         res.status(200).send({message: 'logged in successfully', token, user: {
@@ -153,9 +153,9 @@ router.patch('/edit-profile', async (req, res) => {
     }
 })
 
-// // all users
+// all users
 // router.get("/users", verifyToken, async(req, res) => {
-//     res.send({message: "Potected users"})
-// })
+//      res.send({message: "Potected users"})
+//  })
 
 module.exports = router;
