@@ -1,5 +1,5 @@
 import React from 'react'
-import blogsData from '../data/blogs.json'
+import blogsData from '../../data/blogs.json'
 
 
 const Blogs = () => {

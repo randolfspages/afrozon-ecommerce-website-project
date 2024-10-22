@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import ProductCards from './ProductCards';
-import products from '../data/products.json';
+import products from '../../data/products.json';
 
 const TrendingProducts = () => {
   const [visibleProducts, setVisibleProducts] = useState(8);

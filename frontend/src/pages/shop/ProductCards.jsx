@@ -1,9 +1,9 @@
 import react from 'react';
 import { Link } from 'react-router-dom';
 import { TiShoppingCart } from 'react-icons/ti';
-import RatingStars from '../components/RatingStars';
+import RatingStars from '../../components/RatingStars';
 import { useDispatch } from 'react-redux';
-import { addToCart } from './../redux/features/cart/cartSlice'
+import { addToCart } from '../../redux/features/cart/cartSlice'
 
 
 const ProductCards = ({products}) => {

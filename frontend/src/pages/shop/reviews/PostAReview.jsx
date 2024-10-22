@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { RiStarSFill, RiStarSLine } from "react-icons/ri";
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import { useFetchProductByIdQuery } from '../../redux/features/products/productsApi';
-import { usePostReviewMutation } from '../../redux/features/reviews/reviewsApi';
+import { useFetchProductByIdQuery } from '../../../redux/features/products/productsApi';
+import { usePostReviewMutation } from '../../../redux/features/reviews/reviewsApi';
 
 
 const PostAReview = ({isModalOpen, handleClose}) => {

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import productsData from '../data/products.json';
+import productsData from '../../data/products.json';
 import ProductCards from './ProductCards';
 import ShopFiltering from './ShopFiltering'
-import { useFetchAllProductsQuery } from '../redux/features/products/productsApi';
+import { useFetchAllProductsQuery } from '../../redux/features/products/productsApi';
 import { MdSkipNext, MdSkipPrevious } from "react-icons/md";
 
 

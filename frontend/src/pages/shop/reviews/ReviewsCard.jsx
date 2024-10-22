@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { formatDate } from '../../utils/formatDate'
-import RatingStars from '../../components/RatingStars'
+import { formatDate } from '../../../utils/formatDate'
+import RatingStars from '../../../components/RatingStars'
 import PostAReview from './PostAReview'
 
 

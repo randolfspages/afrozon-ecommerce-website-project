@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-import ProductsData from '../../data/products.json'
-import RatingStars from '../../components/RatingStars';
+import ProductsData from '../../../data/products.json'
+import RatingStars from '../../../components/RatingStars';
 import { useDispatch } from 'react-redux';
-import { useFetchProductByIdQuery } from '../../redux/features/products/productsApi';
-import { addToCart } from '../../redux/features/cart/cartSlice';
+import { useFetchProductByIdQuery } from '../../../redux/features/products/productsApi';
+import { addToCart } from '../../../redux/features/cart/cartSlice';
 import ReviewsCard from '../reviews/ReviewsCard';
 
 

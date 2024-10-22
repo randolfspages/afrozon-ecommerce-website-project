@@ -3,7 +3,7 @@ import { RiCloseLargeFill } from "react-icons/ri";
 import { BsCartPlus, BsCartDash } from "react-icons/bs";
 import OrderSummary from './OrderSummary';
 import { useDispatch } from 'react-redux';
-import { removeFromCart, updateQuantity } from '../redux/features/cart/cartSlice';
+import { removeFromCart, updateQuantity } from '../../redux/features/cart/cartSlice';
 
 
 

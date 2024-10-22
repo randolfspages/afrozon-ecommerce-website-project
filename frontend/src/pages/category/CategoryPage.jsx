@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
 import { useState } from 'react';
-import products from '../data/products.json';
+import products from '../../data/products.json';
 import ProductCards from '../shop/ProductCards';
 
 const CategoryPage = () => {

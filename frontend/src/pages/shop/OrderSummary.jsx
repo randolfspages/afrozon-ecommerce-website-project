@@ -2,9 +2,9 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { RiDeleteBin2Fill } from "react-icons/ri";
 import { MdOutlinePayment } from "react-icons/md";
-import { clearCart } from '../redux/features/cart/cartSlice';
+import { clearCart } from '../../redux/features/cart/cartSlice';
 import {loadStripe} from '@stripe/stripe-js'
-import { getBaseUrl } from '../utils/baseURL';
+import { getBaseUrl } from '../../utils/baseURL';
 
 
 
