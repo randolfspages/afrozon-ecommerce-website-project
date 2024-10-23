@@ -4,11 +4,11 @@ import { useGetOrdersByEmailQuery } from '../../../redux/features/orders/orderAp
 
 const UserPayments = () => {
     const {user} = useSelector((state) => state.auth);
-    const {data: ordersdata, error, isLoading} = useGetOrdersByEmailQuery(user?.email);
+    const {data: ordersData, error, isLoading} = useGetOrdersByEmailQuery(user?.email);
 
     if(isLoading) return <div>Loading....</div>
     if(error) return <div>No order found!</div>
-    const orders =  ordersdata.orders || {};
+    const orders =  ordersData.orders || {};
     const totalPayment = orders?.reduce((acc, order) => acc + order.amount, 0).toFixed(2);
     console.log(totalPayment)
   return (
@@ -20,9 +20,9 @@ const UserPayments = () => {
                 {
                     orders && orders.map((item, index) => (
                         <li key={index}>
-                            <h5 className='font-medium text-gray-800 mb-2'>Order #{index + 1}</h5>
+                            <h5 className='font-medium text-gray-800 mb-2'>Order No.:  {index + 1}</h5>
                             <div>
-                                <span className='text-gray-600'>Order # ${item?.amount.toFixed(2)}</span>
+                                <span className='text-gray-600'>Order Amount:  ${item?.amount.toFixed(2)}</span>
                             </div>
                             <div className='flex md:flex-row items-center space-x-2'>
                                 <span className='text-gray-600'>Date: {new Date(item?.createdAt).toLocaleString()}</span>

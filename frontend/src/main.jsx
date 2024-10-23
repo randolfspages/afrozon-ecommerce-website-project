@@ -20,6 +20,16 @@ import PrivateRoute from './routers/PrivateRoute.jsx';
 import UserDMain from './pages/dashboard/user/dashboard/UserDMain.jsx';
 import UserOrders from './pages/dashboard/user/UserOrders.jsx';
 import OrderDetails from './pages/dashboard/user/OrderDetails.jsx'
+import UserPayments from './pages/dashboard/user/UserPayments.jsx';
+import UserReviews from './pages/dashboard/user/UserReviews.jsx';
+import UserProfile from './pages/dashboard/user/UserProfile.jsx';
+import AdminDMain from "./pages/dashboard/admin/dashboard/AdminDMain";
+import AddProduct from "./pages/dashboard/admin/addProduct/AddProduct";
+import ManageProduct from "./pages/dashboard/admin/manageProduct/ManageProduct";
+import UpdateProduct from "./pages/dashboard/admin/manageProduct/UpdateProduct";
+import ManageUser from "./pages/dashboard/admin/users/ManageUser";
+import ManageOrders from "./pages/dashboard/admin/manageOrders/ManageOrders";
+
 
 const router = createBrowserRouter([
   {
@@ -59,16 +69,16 @@ const router = createBrowserRouter([
       // user routes
       { path: '', element: <UserDMain/> },
       { path: 'orders', element: <UserOrders/> },
-      { path: 'payments', element: <div>User's Payment/s</div> },
-      { path: 'profile', element: <div>User's Profile</div> },
-      { path: 'reviews', element: <div>User's Review/s</div> },
+      { path: 'payments', element: <UserPayments/>},
+      { path: 'profile', element: <UserProfile /> },
+      { path: 'reviews', element: <UserReviews /> },
 
       // Admin routes (strictly by Admin), Todo: Private Routes with  role field
       {
         path: 'admin',
         element: (
           <PrivateRoute role="admin">
-            <div>Admin Main</div>
+            <AdminDMain />
           </PrivateRoute>
         ),
       },
@@ -77,7 +87,7 @@ const router = createBrowserRouter([
         path: 'add-new-post',
         element: (
           <PrivateRoute role="admin">
-            <div>New Post</div>
+            <AddProduct />
           </PrivateRoute>
         ),
       },
@@ -86,7 +96,7 @@ const router = createBrowserRouter([
         path: 'manage-products',
         element: (
           <PrivateRoute role="admin">
-            <div>Manage Post</div>
+            <ManageProduct />
           </PrivateRoute>
         ),
       },
@@ -95,7 +105,7 @@ const router = createBrowserRouter([
         path: 'update-product/:id',
         element: (
           <PrivateRoute role="admin">
-            <div>Update Post</div>
+            <UpdateProduct />
           </PrivateRoute>
         ),
       },
@@ -104,7 +114,7 @@ const router = createBrowserRouter([
         path: 'users',
         element: (
           <PrivateRoute role="admin">
-            <div>All Users</div>
+            <ManageUser />
           </PrivateRoute>
         ),
       },
@@ -113,7 +123,7 @@ const router = createBrowserRouter([
         path: 'manage-orders',
         element: (
           <PrivateRoute role="admin">
-            <div>Manage Orders</div>
+            <ManageOrders />
           </PrivateRoute>
         ),
       },

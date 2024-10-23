@@ -39,31 +39,31 @@ const PaymentSuccess = () => {
 
     const isCurrent = (status) => order.status ===  status;
     const steps = [
-        {
-          status: 'pending',
-          label: 'Pending',
-          description: 'Your order has been created and is awaiting processing.',
-          icon: { iconName: <MdOutlineTimer className='bg-red-700 text-gray-800'/>, bgColor: 'red-700', textColor: 'gray-800' },
-        },
-        {
-          status: 'processing',
-          label: 'Processing',
-          description: 'Your order is currently being processed.',
-          icon: { iconName: <RiLoaderLine className='bg-yellow-800 text-yellow-800' />, bgColor: 'yellow-800', textColor: 'yellow-800' },
-        },
-        {
-          status: 'shipped',
-          label: 'Shipped',
-          description: 'Your order has been shipped.',
-          icon: { iconName: <RiTruckLine className='bg-blue-800 text-blue-800' />, bgColor: 'blue-800', textColor: 'blue-800' },
-        },
-        {
-          status: 'completed',
-          label: 'Completed',
-          description: 'Your order has been successfully completed.',
-          icon: { iconName: <IoBagCheckOutline className='bg-green-800 text-green-900' />, bgColor: 'green-800', textColor: 'green-900' },
-        },
-      ];
+      {
+        status: 'pending',
+        label: 'Pending',
+        description: 'Your order has been created and is awaiting processing.',
+        icon: { iconName: <MdOutlineTimer />},
+      },
+      {
+        status: 'processing',
+        label: 'Processing',
+        description: 'Your order is currently being processed.',
+        icon: { iconName: <RiLoaderLine />},
+      },
+      {
+        status: 'shipped',
+        label: 'Shipped',
+        description: 'Your order has been shipped.',
+        icon: { iconName: <RiTruckLine />},
+      },
+      {
+        status: 'completed',
+        label: 'Completed',
+        description: 'Your order has been successfully completed.',
+        icon: { iconName: <IoBagCheckOutline /> },
+      },
+    ];
 
   return (
     <section className='section__container rounded p-6 mt-40'>

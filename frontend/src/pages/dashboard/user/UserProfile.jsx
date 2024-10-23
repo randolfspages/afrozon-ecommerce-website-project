@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEditProfileMutation } from '../../../redux/features/auth/authApi';
-
-import avatarImg from '../../../assets/avatar.png'
 import { setUser } from '../../../redux/features/auth/authSlice';
+import { AiOutlineCloseCircle } from "react-icons/ai";
 
 const UserProfile = () => {
     const dispatch = useDispatch();
@@ -53,6 +52,7 @@ const UserProfile = () => {
             dispatch(setUser(response.user));
             localStorage.setItem('user', JSON.stringify(response.user))
             alert('Profile updated successfully!');
+
         } catch (error) {
           console.error("Failed to update profile", error)  ;
           alert("Failed to update profile. Please try again")
@@ -65,7 +65,7 @@ const UserProfile = () => {
         <div className='container mx-auto p-6'>
             <div className='bg-white shadow-md rounded-lg p-6'>
                 <div className='flex items-center mb-4'>
-                    <img src={formData?.profileImage || avatarImg} alt="" className='w-32 h-32 object-cover rounded-full' />
+                    <img src={formData?.profileImage || '/avatar.png'} alt="" className='w-32 h-32 object-cover rounded-full' />
                     <div className='ml-6'>
                         <h3 className='text-2xl font-semibold'>Username: {formData?.username || 'N/A'}</h3>
                         <p className='text-gray-700'>User Bio: {formData.bio || 'N/A'}</p>
@@ -85,11 +85,11 @@ const UserProfile = () => {
             {/* show modal */}
             {
                 isModalOpen && (
-                    <div className='fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50'>
+                    <div className='fixed h-screen inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50'>
                         <div className='bg-white p-6 rounded-lg md:w-96 max-w-xl mx-auto relative'>
                             <button
                                 onClick={() => setIsModalOpen(false)}
-                                className='absolute top-2 right-2 text-gray-500 hover:text-gray-700'><i className="ri-close-line size-8 p-2 bg-black rounded-full"></i></button>
+                                className='absolute top-2 right-2 text-gray-500 hover:text-gray-700'><AiOutlineCloseCircle className='bg-color-white size-5'/></button>
                             <h2 className='text-2xl font-bold mb-4'>Edit Profile</h2>
                             <form onSubmit={handleSubmit}> 
                                 <div className='mb-4'>

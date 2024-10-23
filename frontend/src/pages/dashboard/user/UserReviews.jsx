@@ -8,7 +8,7 @@ const UserReviews = () => {
     const {data: reviews, error, isLoading} = useGetReviewsByUserIdQuery(user?._id);
     const navigate = useNavigate()
     if(isLoading) return <div>Loading...</div>
-    if(error) return <div>Failed to load reviews!</div>
+    if(error) return <div>No review available or Failed to load reviews!</div>
 
     const handleCardClick = () => {
         navigate('/shop')
@@ -29,7 +29,7 @@ const UserReviews = () => {
             }
             <div 
             onClick={handleCardClick}
-            className='bg-gray-100 text-black flex items-center justify-center rounded-lg p-6 border cursor-pointer hover:bg-primary hover:text-white transition-all duration-200'>
+            className='bg-gray-100 text-black flex items-center justify-center rounded-lg p-6 border cursor-pointer hover:bg-red-700 hover:text-white transition-all duration-200'>
                 <span>+</span>
                 <p>Add New Review</p>
             </div>
