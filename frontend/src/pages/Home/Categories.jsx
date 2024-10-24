@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom'
 const Categories = () => {
 
     const categories = [
-        {name:'accessories', path:'/categories/:accessories', image:'/category-1.jpg'},
-        {name:'dress', path:'/categories/:dresses', image:'/category-2.jpg'},
-        {name:'jewellery', path:'/categories/:jewelleries', image:'/category-3.jpg'},
-        {name:'cosmetics', path:'/categories/:comestics', image:'/category-4.jpg'},
+        {name:'accessories', path:'/categories/:accessories', image:'/productImages/AfricanAccessories1.jpeg'},
+        {name:'dress', path:'/categories/:dresses', image:'/productImages/AfricanWear3.jpg'},
+        {name:'jewellery', path:'/categories/:jewelleries', image:'/productImages/AfricanJewelry1.jpeg'},
+        {name:'cosmetics', path:'/categories/:comestics', image:'/productImages/AfricanCosmetic1.jpg'},
 
     ]
   return (

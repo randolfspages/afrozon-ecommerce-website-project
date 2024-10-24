@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
-
 import axios from 'axios'
 import { getBaseUrl } from '../../../../utils/baseURL';
+
+
+
 
 const UploadImage = ({ name, setImage }) => {
     const [loading, setLoading] = useState(false);
@@ -27,9 +29,8 @@ const UploadImage = ({ name, setImage }) => {
     // request to upload a file
     const uploadSingleImage = (base64) => {
         setLoading(true);
-        axios
-            .post(`${getBaseUrl()}/uploadImage`, { image: base64 })
-            .then((res) => {
+        axios.post(`${getBaseUrl()}/uploadImage`, { image: base64 })
+        .then((res) => {
                 const imageUrl = res.data;
                 setUrl(imageUrl);
                 // console.log(imageUrl);

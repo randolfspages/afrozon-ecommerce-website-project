@@ -71,9 +71,6 @@ const AdminStatsChart = ({ stats }) => {
                     <Line data={lineData} options={options}/>
                 </div>
             </div>
-            <div>
-                <p className='text-center'>Made with Mamun</p>
-            </div>
         </div>
     )
 }

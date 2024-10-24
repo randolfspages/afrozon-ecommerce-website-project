@@ -31,7 +31,7 @@ const SubBanner = () => {
                     </div>
                 </div>
                 <div className='header__image m-0'>
-                    <img src="/header.png" width={400} alt="" />
+                    <img src="/productImages/AfricanWear3.jpg" width={500} alt="" />
                 </div>
             </main>
         </div>
