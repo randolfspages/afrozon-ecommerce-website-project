@@ -20,21 +20,21 @@ const colors = [
     { label: 'Red', value: 'red' },
     { label: 'Gold', value: 'gold' },
     { label: 'Blue', value: 'blue' },
-    { label: 'Silver', value: 'silver' },
-    { label: 'Beige', value: 'beige' },
-    { label: 'Green', value: 'green' }
+    { label: 'Grey', value: 'grey' },
+    { label: 'White', value: 'white' },
+    { label: 'Wine', value: 'wine' },
+    { label: 'Pink', value: 'pink' },
+    { label: 'Ash', value: 'ash' },
+    { label: 'Purple', value: 'purple' },
+    { label: 'Green', value: 'green' },
+    { label: 'Multicolored', value: 'multicolored' },
+
 ];
 
 const AddProduct = () => {
     const { user } = useSelector((state) => state.auth);
 
-    const [product, setProduct] = useState({
-        name: '',
-        category: '',
-        color: '',
-        price: '',
-        description: ''
-    });
+    const [product, setProduct] = useState({name: '', category: '', color: '', price: '', description: ''});
     const [image, setImage] = useState('');
 
     const [AddProduct, {isLoading, error}] = useAddProductMutation()
@@ -42,13 +42,9 @@ const AddProduct = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setProduct({
-            ...product,
-            [name]: value
-        });
-
-
+        setProduct({ ...product, [name]: value });
     };
+    
 
     const navigate = useNavigate()
 
@@ -76,7 +72,7 @@ const AddProduct = () => {
 
     return (
         <div className="container mx-auto mt-8">
-            <h2 className="text-2xl font-bold mb-6">Add New Product</h2>
+            <h2 className="text-2xl font-bold mb-6">Add Product</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <TextInput
                     label="Product Name"

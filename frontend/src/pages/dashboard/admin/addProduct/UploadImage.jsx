@@ -29,17 +29,15 @@ const UploadImage = ({ name, setImage }) => {
     // request to upload a file
     const uploadSingleImage = (base64) => {
         setLoading(true);
-        axios.post(`${getBaseUrl()}/uploadImage`, { image: base64 })
+        axios.post(`${getBaseUrl()}/uploadImage`,{ image: base64 })
         .then((res) => {
                 const imageUrl = res.data;
                 setUrl(imageUrl);
-                // console.log(imageUrl);
+                console.log(imageUrl);
                 alert("Image uploaded successfully");
                 setImage(imageUrl); 
-            })
-            .then(() => setLoading(false))
-            .catch((error) => {
-                console.error(error);
+            }).then(() => setLoading(false)).catch((error) => {
+                console.error('Error uploading image',error);
                 setLoading(false);
             });
     };

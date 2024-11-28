@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDeleteUserMutation, useGetUserQuery } from '../../../../redux/features/auth/authApi'
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import UpdateUserModal from './UpdateUserModal';
 
 const ManageUser = () => {

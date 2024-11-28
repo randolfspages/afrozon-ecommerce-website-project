@@ -53,7 +53,7 @@ async function main() {
   await mongoose.connect(process.env.DB_URL);
 
   app.get('/', (req, res) => {
-    res.send('Afrozon Ecommerce Server is running...!')
+    res.send('Besia Ecommerce Server is running...!')
   });
 
 }

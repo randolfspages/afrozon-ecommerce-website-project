@@ -90,18 +90,19 @@ const ManageProduct = () => {
                                                     {index + 1}
                                                 </th>
                                                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                                                    {product?.name}
+                                                    <Link to='/shop'>{product?.name}</Link>
+                                                    {/* <Link to={`/shop/productDetails/SingleProduct/${product._id}`}>{product?.name}</Link> */}
                                                 </td>
                                                 <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                                     {formatDate(product?.createdAt)}
                                                 </td>
-                                                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 cursor-pointer hover:text-primary">
+                                                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 cursor-pointer hover:text-blue-600">
                                                     <Link to={`/dashboard/update-product/${product._id}`}> Edit</Link>
                                                 </td>
                                                 <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                                     <button
                                                         onClick={() => handleDeleteProduct(product._id)}
-                                                        className='bg-red-600 text-white px-2 py-1'>Delete</button>
+                                                        className='bg-red-600 text-white px-2 py-1 hover:text-black hover:bg-white'>Delete</button>
                                                 </td>
                                             </tr>
                                         ))
@@ -120,7 +121,8 @@ const ManageProduct = () => {
                     <button disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)} className='px-4 py-2 bg-gray-300 text-gray-700 rounded-md mr-2'>Previous</button>
                     {
                         [...Array(totalPages)].map((_, index) => (
-                            <button 
+                            <button
+                            key={index} 
                             onClick={() => handlePageChange(index + 1)}
                             className={`px-4 py-2 ${currentPage === index + 1 ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-700'} rounded-md mx-1`}>{index + 1}</button>
                         ))
@@ -133,7 +135,7 @@ const ManageProduct = () => {
                         <div className="flex flex-wrap items-center md:justify-between justify-center">
                             <div className="w-full md:w-6/12 px-4 mx-auto text-center">
                                 <div className="text-sm text-blueGray-500 font-semibold py-1">
-                                    Made with <a href="https://www.creative-tim.com/product/notus-js" className="text-blueGray-500 hover:text-gray-800" target="_blank">Notus JS</a> by <a href="https://www.creative-tim.com" className="text-blueGray-500 hover:text-blueGray-800" target="_blank"> Creative Tim</a>.
+                                     <a href="https://www.creative-tim.com/product/notus-js" className="text-blueGray-500 hover:text-gray-800" target="_blank">Notus JS</a> by <a href="https://www.creative-tim.com" className="text-blueGray-500 hover:text-blueGray-800" target="_blank"> Creative Tim</a>.
                                 </div>
                             </div>
                         </div>

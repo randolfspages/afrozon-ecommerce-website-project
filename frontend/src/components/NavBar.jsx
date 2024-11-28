@@ -72,8 +72,7 @@ const NavBar = () => {
 
 {/* Only for mobile */}
         <div className='text-center text-white'>
-        <ul className={`md:hidden block space-y-12 py-6 px-4 bg-black text-lg 
-            ${isMenuOpen ? 'fixed left-0 w-full transition-all ease-out duration-150' : 'hidden'}`}>
+        <ul className={`md:hidden block space-y-12 py-6 px-4 bg-black text-lg ${isMenuOpen ? 'fixed left-0 w-full transition-all ease-out duration-150' : 'hidden'}`}>
                 {
                     navItems2.map(({path, link}) => 
                     <li key={path}>
